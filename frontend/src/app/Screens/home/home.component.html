@@ -1,0 +1,131 @@
+<div class="container">
+    <div class="row justify-content-between align-items-end">
+        <div class="col-6">
+            <button type="button" class="btn createButton" (click)="onTodoInsert(popupTodoForm)">Create new
+                todo</button>
+        </div>
+        <div class="col-3">
+            <label>Select a status</label>
+            <select class="form-select" aria-label="Dropdown select for filtering todos"
+                (change)="onChangeTodoStatus($event)">
+                <option value="ALL">All</option>
+                <option value="COMPLETED">Completed</option>
+                <option value="IN PROGRESS">In Progress</option>
+                <option value="OPEN">Open</option>
+            </select>
+        </div>
+    </div>
+
+
+    <div class="container todos">
+        <div *ngIf="filteredTodos && filteredTodos.length > 0">
+            <div class="row rowSpacer todoRow" *ngFor="let todo of filteredTodos">
+                <div class="col-7">
+                    <app-todo [todo]="todo" (onEdit)="onTodoEdit(popupTodoForm, todo, $event)"
+                        (onDelete)="onTodoDelete(deleteModalDialog, todo)"></app-todo>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="filteredTodos && filteredTodos.length === 0">
+            <div class="row rowSpacer pt-4">
+                <p class="text-center zeroTodos">You have not registered any todos!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #popupTodoForm let-modal>
+    <div class="modal-header">
+        <div class="modal-title">
+            <h4 *ngIf="!isOld">New Todo</h4>
+            <h4 *ngIf="isOld">Edit of todo with id: {{selectedTodo!.todoID}}</h4>
+        </div>
+    </div>
+    <div class="modal-body">
+        <form [formGroup]="todoForm">
+            <div class="row">
+                <div class="col-12">
+                    <div class="form-group">
+                        <label class="control-label" for="title">Title</label>
+                        <input type="text" class="form-control" id="title" name="title" formControlName="title"
+                            aria-label="title" aria-describedby="basic-addon1">
+                        <div *ngIf="todoForm.controls['title'].invalid && (todoForm.controls['title'].dirty)">
+                            <small *ngIf="todoForm.controls['title'].errors?.['required']">
+                                Title is required!
+                            </small>
+                            <small *ngIf="todoForm.controls['title'].errors?.['minlength']">
+                                Title should be at least 5 characters long!
+                            </small>
+                            <small *ngIf="todoForm.controls['title'].errors?.['maxlength']">
+                                Title should be at most 15 characters long!
+                            </small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row rowSpacer">
+                <div class="col-12">
+                    <div class="form-group">
+                        <label class="control-label" for="description">Description</label>
+                        <textarea class="form-control" id="description" rows="2" cols="50" name="description"
+                            formControlName="description" maxLength="110" aria-label="description"
+                            aria-describedby="basic-addon2">
+                        </textarea>
+                        <div
+                            *ngIf="todoForm.controls['description'].invalid && (todoForm.controls['description'].dirty)">
+                            <small *ngIf="todoForm.controls['description'].errors?.['required']">
+                                Description is required!
+                            </small>
+                            <small *ngIf="todoForm.controls['description'].errors?.['minlength']">
+                                Description should be at least 5 characters long!
+                            </small>
+                            <small *ngIf="todoForm.controls['description'].errors?.['maxlength']">
+                                Description should be at most 100 characters long!
+                            </small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row rowSpacer" *ngIf="isOld">
+                <div class="col-12">
+                    <div class="form-group">
+                        <label class="control-label" for="status">Status</label>
+                        <select class="form-select" aria-label="Dropdown select for the status of todo"
+                            formControlName="status" id="status">
+                            <option value="COMPLETED">Completed</option>
+                            <option value="IN PROGRESS">In Progress</option>
+                            <option value="OPEN">Open</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn cancelButton" (click)="modal.dismiss('cancel')">
+            Cancel
+        </button>
+        <button type="button" class="btn saveButton" (click)="modal.close('ok')" [disabled]="todoForm.invalid">
+            Save
+        </button>
+    </div>
+</ng-template>
+
+<ng-template #deleteModalDialog let-modal>
+    <div class="modal-header">
+        <div class="modal-title">
+            <h4>Deletion of the todo with id: {{5}}</h4>
+        </div>
+    </div>
+    <div class="modal-body">
+        <p>Are you sure you want to delete the todo?</p>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn cancelButton" (click)="modal.dismiss('cancel')">
+            Cancel
+        </button>
+        <button type="button" class="btn deleteButton" (click)="modal.close('ok')">
+            Delete
+        </button>
+    </div>
+</ng-template>

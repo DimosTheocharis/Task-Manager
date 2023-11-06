@@ -1,0 +1,136 @@
+@use "scss/variables";
+
+@import 'node_modules/bootstrap/scss/bootstrap';
+@import 'ngx-toastr/toastr';
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: variables.$mainColor;
+    overflow-x: hidden;
+}
+
+
+// will be used in divs with row class in order to achieve same spacing in whole app
+.rowSpacer {
+    margin-top: 20px;
+}
+
+label+input,
+label+textarea,
+label+select {
+    margin-top: variables.$inputMargin;
+}
+
+small {
+    color: variables.$dangerColor;
+}
+
+.cancelButton {
+    background-color: variables.$cancelColor;
+    border: 1px solid variables.$cancelColor;
+    color: variables.$mainColor;
+    font-weight: 500;
+}
+
+.cancelButton:hover,
+.cancelButton:active {
+    background-color: variables.$cancelColorActive !important;
+    border: 1px solid variables.$cancelColorActive !important;
+    color: variables.$mainColor !important;
+}
+
+.createButton {
+    background-color: variables.$tertiaryColor;
+    border: 2px solid variables.$tertiaryColor;
+    color: variables.$textColor;
+    font-weight: 500;
+    transition: all 0.3s ease-out;
+}
+
+.createButton:hover,
+.createButton:active,
+.createButton:focus {
+    background-color: variables.$tertiaryColor !important;
+    border: 2px solid variables.$tertiaryColor !important;
+    color: variables.$textColor !important;
+    transform: scale(1.02);
+}
+
+.loginButton,
+.registerButton {
+    background-color: variables.$secondaryColor;
+    border: 2px solid variables.$secondaryColor;
+    color: variables.$textColor;
+    font-weight: 500;
+    transition: all 1s ease-out;
+}
+
+.loginButton:hover,
+.registerButton:hover {
+    background-color: variables.$secondaryColorActive !important;
+    border: 2px solid variables.$secondaryColorActive !important;
+    color: variables.$textColor;
+}
+
+
+
+.loginButton:disabled,
+.registerButton:disabled {
+    background-color: variables.$secondaryColorDisabled !important;
+    border: 2px solid variables.$secondaryColorDisabled !important;
+    color: variables.$textColorDisabled;
+}
+
+.deleteButton {
+    background-color: variables.$dangerColor;
+    border: 1px solid variables.$dangerColor;
+    color: variables.$textColor;
+    font-weight: 500;
+    transition: all 0.3s ease-out;
+}
+
+.deleteButton:hover,
+.deleteButton:active {
+    background-color: variables.$dangerColorActive !important;
+    border: 1px solid variables.$dangerColorActive !important;
+    color: variables.$textColorDisabled !important;
+}
+
+.editButton {
+    background-color: variables.$editColor;
+    border: 1px solid variables.$editColor;
+    color: variables.$textColor;
+    font-weight: 500;
+    transition: all 0.3s ease-out;
+}
+
+.editButton:hover,
+.editButton:active {
+    background-color: variables.$editColorActive !important;
+    border: 1px solid variables.$editColorActive !important;
+    color: variables.$textColorDisabled !important;
+}
+
+.saveButton {
+    @extend .editButton;
+}
+
+.pageTitle {
+    color: variables.$textColor;
+}
+
+label {
+    color: variables.$textColor;
+}
+
+.form-control,
+.form-control:active,
+.form-control:focus,
+.form-select {
+    background-color: variables.$tertiaryColor;
+    border: 1px solid variables.$tertiaryColor;
+    color: variables.$textColor;
+}

@@ -1,0 +1,69 @@
+@use 'src/scss/variables';
+
+$totalStages: 5;
+$width: 150px;
+$height: 40px;
+$stageWidth: calc($width / $totalStages);
+
+.wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    column-gap: 8px;
+}
+
+.clockTimer {
+    height: $height;
+    display: flex;
+    flex-direction: row-reverse;
+    column-gap: 8px;
+    align-items: center;
+    color: variables.$accentColor1;
+
+    p {
+        visibility: hidden;
+        margin: 0px;
+        padding: 0px;
+        font-size: 24px;
+        font-weight: bold;
+        padding-bottom: 4px;
+    }
+}
+
+.clockTimer i:hover {
+    cursor: pointer;
+}
+
+.clockTimer i:hover+p {
+    visibility: visible;
+}
+
+.progress-bar {
+    width: $width;
+    height: $height;
+    border-radius: 8px;
+    background-color: variables.$accentColor2;
+    border: 3px solid variables.$mainColor;
+    position: relative;
+}
+
+@for $i from 1 through $totalStages - 1 {
+    .vertical-line:nth-child(#{$i}) {
+        position: absolute;
+        top: 0px;
+        left: calc($i * $stageWidth - 2px);
+        width: 4px;
+        height: 100%;
+        background-color: variables.$mainColor;
+        z-index: 2;
+    }
+}
+
+#progress {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    background-color: variables.$accentColor1;
+    z-index: 1;
+}

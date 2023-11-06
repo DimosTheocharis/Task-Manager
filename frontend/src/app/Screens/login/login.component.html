@@ -1,0 +1,50 @@
+<div class="loginContainer">
+    <div class="row">
+        <div class="col-12 text-center pageTitle">
+            <h3>Login Screen</h3>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-4 pt-5">
+            <form [formGroup]="form" autocomplete="off">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="form-group">
+                            <label class="control-label" for="username">Username</label>
+                            <input type="text" name="username" id="username" class="form-control" aria-label="username"
+                                aria-describedby="basic-addon1" formControlName="username">
+                            <div
+                                *ngIf="form.controls['username'].invalid && (form.controls['username'].dirty || form.controls['username'].touched)">
+                                <small *ngIf="form.controls['username'].errors?.['required']">
+                                    Username is required!
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row rowSpacer">
+                    <div class="col-12">
+                        <div class="form-group">
+                            <label class="control-label" for="password">Password</label>
+                            <input type="password" name="password" id="password" class="form-control"
+                                aria-label="password" aria-describedby="basic-addon1" formControlName="password">
+                            <div
+                                *ngIf="form.controls['password'].invalid && (form.controls['password'].dirty || form.controls['password'].touched)">
+                                <small *ngIf="form.controls['password'].errors?.['required']">
+                                    Password is required!
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row rowSpacer">
+                    <div class="col-12">
+                        <button type="button" class="btn loginButton w-100" (click)="login()" [disabled]="form.invalid">
+                            Log In
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,39 @@
+@use "src/scss/variables";
+
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+i {
+    cursor: pointer;
+}
+
+.links {
+    width: 30%;
+    color: variables.$textColor;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.welcomeWrapper {
+    padding-right: 20px;
+    color: variables.$accentColor1;
+}
+
+.navbar {
+    background-color: variables.$secondaryColor;
+}
+
+.mainContent {
+    height: 100vh;
+    background-color: variables.$mainColor;
+}
+
+.logo a {
+    color: variables.$accentColor1;
+    font-size: 26px;
+    font-weight: bold;
+}

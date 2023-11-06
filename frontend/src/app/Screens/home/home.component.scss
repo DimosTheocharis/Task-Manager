@@ -1,0 +1,26 @@
+@use 'src/scss/variables';
+
+.todos .todoRow {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.modal-header,
+.modal-body,
+.modal-footer {
+    background-color: variables.$secondaryColor;
+    border: 1px solid variables.$secondaryColor;
+}
+
+.modal-title h4 {
+    color: variables.$textColor;
+}
+
+.modal-body p {
+    color: variables.$textColor;
+}
+
+.zeroTodos {
+    color: variables.$textColor;
+}

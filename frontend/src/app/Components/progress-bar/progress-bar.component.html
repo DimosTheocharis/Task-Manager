@@ -1,0 +1,13 @@
+<div class="wrapper">
+    <div class="clockTimer">
+        <i class="fa-solid fa-clock"></i>
+        <p>| {{timeLeft}} |</p>
+    </div>
+
+    <div class="progress-bar">
+        <div class="stages">
+            <div class="vertical-line" *ngFor="let stage of fakeArray"></div>
+            <div id="progress" [ngStyle]="{'width': currentProgressWidth}"></div>
+        </div>
+    </div>
+</div>

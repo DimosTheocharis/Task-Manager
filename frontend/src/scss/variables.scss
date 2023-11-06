@@ -1,0 +1,27 @@
+// global variable 
+$padder: 8px;
+$inputMargin: 5px;
+
+// colors
+$mainColor: #040D12; // --> background
+$secondaryColor: #183D3D; // --> titles, categories, buttons and important text in general
+$tertiaryColor: #385B6E; // --> placeholders
+$accentColor1: #5C8374; // --> progressbar, icon, small elements you can interact with
+$accentColor2: #93B1A6; // -> completed tasks, declares validity, 
+$textColor: #E0E0E0; // --> text
+$dangerColor: #FF5733; // --> error, delete action
+$editColor: #0E2E2E; // --> edit action
+$cancelColor: #93B1A6; // --> cancel action
+$completedColor: #93B1A6; // --> for tasks that are completed
+$workInProgressColor: #5C8374; // --> for tasks that user has began working on them but are not completed
+$openColor: #FF5733; // --> new tasks that user hasn't start working on them yet
+
+// active colors
+$secondaryColorActive: #225B5B; // --> hover effect
+$dangerColorActive: #E64E29; // --> hover effect
+$editColorActive: #0A2424; // hover effect
+$cancelColorActive: #7A9F8E; // hover effect
+
+// disable colors
+$secondaryColorDisabled: #0F2D2D; // --> disabled status
+$textColorDisabled: #D0D0D0; // --> disabled status

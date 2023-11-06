@@ -1,0 +1,26 @@
+<div class="card todoContainer">
+    <div class="row g-0 wrapper">
+        <div class="statusArea" [ngClass]="{
+            'open': todo.status === 'OPEN', 
+            'completed': todo.status === 'COMPLETED',
+            'wip': todo.status === 'IN PROGRESS'
+        }">
+            <p class="card-text">{{todo.status}}</p>
+        </div>
+        <div class="col-10 card-body informationArea">
+            <div class="todoTitle">
+                <h3 class="card-title">{{todo.title}}</h3>
+                <p class="todoID">{{todo.todoID}}</p>
+            </div>
+            <p class="card-text description">{{todo.description}}</p>
+        </div>
+        <div class="col-2 buttonsArea">
+            <button type="button" class="btn editButton" (click)="onTodoEdit()">
+                <i class="fa-solid fa-pen"></i>
+            </button>
+            <button type="button" class="btn deleteButton" (click)="onTodoDelete()">
+                <i class="fa-solid fa-trash-can"></i>
+            </button>
+        </div>
+    </div>
+</div>
