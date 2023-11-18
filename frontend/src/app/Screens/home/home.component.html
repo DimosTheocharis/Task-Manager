@@ -1,10 +1,10 @@
-<div class="container">
+<div class="container-fluid">
     <div class="row justify-content-between align-items-end">
-        <div class="col-6">
-            <button type="button" class="btn createButton" (click)="onTodoInsert(popupTodoForm)">Create new
-                todo</button>
+        <div class="col-sm-6">
+            <button type="button" class="btn createButton" (click)="onTodoInsert(popupTodoForm)">New
+                task</button>
         </div>
-        <div class="col-3">
+        <div class="col-sm-3">
             <label>Select a status</label>
             <select class="form-select" aria-label="Dropdown select for filtering todos"
                 (change)="onChangeTodoStatus($event)">
@@ -17,10 +17,10 @@
     </div>
 
 
-    <div class="container todos">
+    <div class="container-fluid todos">
         <div *ngIf="filteredTodos && filteredTodos.length > 0">
             <div class="row rowSpacer todoRow" *ngFor="let todo of filteredTodos">
-                <div class="col-7">
+                <div class="col-xl-6 col-lg-8 col-md-10 col-12">
                     <app-todo [todo]="todo" (onEdit)="onTodoEdit(popupTodoForm, todo, $event)"
                         (onDelete)="onTodoDelete(deleteModalDialog, todo)"></app-todo>
                 </div>
@@ -28,7 +28,7 @@
         </div>
         <div *ngIf="filteredTodos && filteredTodos.length === 0">
             <div class="row rowSpacer pt-4">
-                <p class="text-center zeroTodos">You have not registered any todos!</p>
+                <p class="text-center zeroTodos">You have not registered any tasks!</p>
             </div>
         </div>
     </div>
@@ -37,8 +37,8 @@
 <ng-template #popupTodoForm let-modal>
     <div class="modal-header">
         <div class="modal-title">
-            <h4 *ngIf="!isOld">New Todo</h4>
-            <h4 *ngIf="isOld">Edit of todo with id: {{selectedTodo!.todoID}}</h4>
+            <h4 *ngIf="!isOld">New Task</h4>
+            <h4 *ngIf="isOld">Edit of task with id: {{selectedTodo!.todoID}}</h4>
         </div>
     </div>
     <div class="modal-body">
@@ -57,7 +57,7 @@
                                 Title should be at least 5 characters long!
                             </small>
                             <small *ngIf="todoForm.controls['title'].errors?.['maxlength']">
-                                Title should be at most 15 characters long!
+                                Title should be at most 30 characters long!
                             </small>
                         </div>
                     </div>
@@ -67,8 +67,8 @@
                 <div class="col-12">
                     <div class="form-group">
                         <label class="control-label" for="description">Description</label>
-                        <textarea class="form-control" id="description" rows="2" cols="50" name="description"
-                            formControlName="description" maxLength="110" aria-label="description"
+                        <textarea class="form-control" id="description" rows="3" cols="40" name="description"
+                            formControlName="description" maxLength="130" aria-label="description"
                             aria-describedby="basic-addon2">
                         </textarea>
                         <div
@@ -118,7 +118,7 @@
         </div>
     </div>
     <div class="modal-body">
-        <p>Are you sure you want to delete the todo?</p>
+        <p>Are you sure you want to delete the task?</p>
     </div>
     <div class="modal-footer">
         <button type="button" class="btn cancelButton" (click)="modal.dismiss('cancel')">

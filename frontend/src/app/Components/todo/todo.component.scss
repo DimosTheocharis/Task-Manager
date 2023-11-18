@@ -1,5 +1,9 @@
 @use "src/scss/variables";
 
+* {
+    margin: 0px;
+}
+
 .buttonsArea {
     display: flex;
     flex-direction: row;
@@ -9,12 +13,10 @@
     padding-bottom: variables.$padder;
     gap: variables.$padder;
     color: variables.$textColor;
-    width: 30%;
 }
 
 .informationArea {
     padding-bottom: 0px;
-    width: calc(70% - 30px);
 
     .description {
         color: variables.$textColor;
@@ -50,12 +52,15 @@
     background-color: variables.$openColor;
 }
 
+.mainContent {
+    width: calc(100% - 30px);
+    padding: 0px;
+}
+
 
 .todoContainer {
     width: 100%;
     height: 130px;
-    max-width: 800px;
-    min-width: 600px;
     background-color: variables.$secondaryColor;
 }
 
@@ -78,4 +83,21 @@
 .wrapper {
     display: flex;
     height: 100%;
+}
+
+@media only screen and (max-width: 700px) {
+    .todoContainer {
+        height: 200px;
+    }
+
+    .informationArea {
+        width: 100%;
+    }
+
+    .buttonsArea {
+        width: 100%;
+        justify-content: flex-start;
+        padding-top: calc(variables.$padder / 2);
+        padding-bottom: calc(variables.$padder / 2);
+    }
 }
