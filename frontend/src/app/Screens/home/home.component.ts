@@ -34,8 +34,8 @@ export class HomeComponent implements OnInit {
 
   buildPopupTodoForm() {
     this.todoForm = this.fb.group({
-      title: new FormControl(null, [Validators.required, Validators.minLength(5), Validators.maxLength(15)]),
-      description: new FormControl(null, [Validators.required, Validators.minLength(5), Validators.maxLength(100)]),
+      title: new FormControl(null, [Validators.required, Validators.minLength(5), Validators.maxLength(30)]),
+      description: new FormControl(null, [Validators.required, Validators.minLength(5), Validators.maxLength(120)]),
       status: new FormControl("OPEN", [Validators.required])
     })
   }
@@ -94,11 +94,12 @@ export class HomeComponent implements OnInit {
 
           this.todoService.createTodo(todoDto).subscribe({
             next: (data: TodoEntity) => {
-              this.toastr.success("Todo created successfully!", "", { timeOut: 500 });
+              this.toastr.success("Todo created successfully!", "", { timeOut: 1000 });
               this.fetchTodos();
             },
             error: (error: any) => {
-              this.toastr.error("Something went wrong during the creation of the todo!", "", { timeOut: 500 });
+              console.log(error);
+              this.toastr.error("Something went wrong during the creation of the todo!", "", { timeOut: 1000 });
             }
           })
         }

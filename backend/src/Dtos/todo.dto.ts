@@ -3,7 +3,7 @@ import { TodoStatus } from "src/Entities/todo.entity";
 
 export class TodoDto {
     @IsNotEmpty()
-    @MaxLength(15, {message: "Title should consist of 15 characters at most"})
+    @MaxLength(30, { message: "Title should consist of 30 characters at most" })
     title: string;
 
     @IsNotEmpty()
